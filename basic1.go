@@ -5,16 +5,58 @@ import (
 )
 
 func main() {
-	add := func(m int) {
-		return m + 1
-	}
-	multiply := func(m int, n int) {
-		return m * n
-	}
-	result := add(5)
+
 	//looping1()
 	//mapping1()
-	fmt.Println(result)
+	/*
+		a, b := 5, 8
+		fn := func(sum int) (int, int) {
+			x := sum * a / b
+			y := sum - x
+			return x, y
+		}
+		// Passing function value as an argument to another function
+		SplitValues(fn)
+		// Calling the function value by providing argument
+		x, y := fn(20)
+		fmt.Println(x, y)*/
+	//array1()
+	slice1()
+}
+
+func SplitValues(f func(sum int) (int, int)) {
+	x, y := f(35)
+	fmt.Println(x, y)
+	x, y = f(50)
+	fmt.Println(x, y)
+}
+func slice1() {
+	x := make([]int, 2, 5)
+	x[0] = 10
+	x[1] = 20
+	fmt.Println("Slice x:", x)
+	fmt.Printf("Length is %d Capacity is %d\n", len(x), cap(x))
+	// Create a bigger slice
+	x = append(x, 30, 40, 50)
+	fmt.Println("Slice x after appending data:", x)
+	fmt.Printf("Length is %d Capacity is %d\n", len(x), cap(x))
+	x = append(x, 60, 70, 80)
+	fmt.Println("Slice x after appending data for the second time:", x)
+	fmt.Printf("Length is %d Capacity is %d\n", len(x), cap(x))
+}
+func array1() {
+	langs := [4]string{"Go", "Rust", "Scala", "Julia"}
+	for i := 0; i < len(langs); i++ {
+		fmt.Printf("langs[%d]:%s \n", i, langs[i])
+	}
+
+	for k, v := range langs {
+		fmt.Printf("langs[%d]:%s \n", k, v)
+	}
+	for _, v := range langs {
+		fmt.Printf(v)
+	}
+
 }
 func looping1() {
 	animals := []string{"Cat", "Dog", "Emu", "Warthog"}
